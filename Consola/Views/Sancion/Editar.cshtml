@@ -1,0 +1,151 @@
+﻿@model Consola.Models.Sancion
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Crear";
+    ViewBag.Title = "Lista";
+    ViewBag.Title = "Lista2";
+
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Sancion/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Editar sanción</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div style="text-align:center;color:red">
+                        @TempData["errorMensaje"]
+                    </div>
+
+                    <div style="text-align:center;color:green">
+                        @TempData["exitoMensaje"]
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Admin"))
+                    {
+                        <div class="box-header">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                        <th style="border:3px solid lightgrey" width="50">
+
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Editar los datos de la sanción.</h3>
+                                                </div>
+
+                                                @using (Html.BeginForm())
+                                                {
+                                                    @Html.AntiForgeryToken()
+
+                                                    <div class="form-horizontal">
+                                                        <br />
+                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                        @Html.HiddenFor(model => model.idSanciones, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                        <label>Empleado sancionado:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                @*@Html.EditorFor(model => model.idEmpleado, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                                @Html.DropDownList("listIdEmpleado", new SelectList(ViewBag.Lista2, "IdEmpleado", "Nombre"), new { htmlAttributes = new { @type = "text", @class = "form-control", @id = "listIdEmpleado", @name = "listIdEmpleado" } })
+
+                                                                @*@Html.ValidationMessageFor(model => model.idEmpleado, "", new { @class = "text-danger" })*@
+                                                            </div>
+                                                        </div>
+
+                                                        <label>Departamento del sancionado:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                @Html.DropDownList("listIdDepartamento", new SelectList(ViewBag.Lista, "idDepartamento", "nombreDepartamento"), new { htmlAttributes = new { @type = "text", @class = "form-control", @id = "listIdDepartamento", @name = "listIdDepartamento" } })
+                                                            </div>
+                                                        </div>
+
+                                                        <label>Fecha de sanción:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.fechaSancion, new { htmlAttributes = new { @class = "form-control pull-right", @id = "datepicker", Type = "date" } })
+                                                                @Html.ValidationMessageFor(model => model.fechaSancion, "", new { @class = "text-danger", Type = "date" })
+                                                            </div>
+                                                        </div>
+
+                                                        <label>Código de sanción:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.codigo, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.codigo, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <label>Detalles:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.detalle, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.detalle, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="modal-footer justify-content-start">
+                                                                <input class="btn btn-primary" type="submit" value="Guardar cambios" id="guardar" name="guardar" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+    @*<script type="text/javascript">
+        $('#datepicker').datepicker({
+            dateFormat: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>*@
+}

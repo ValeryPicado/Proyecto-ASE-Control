@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Consola.Models.Compra>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Home/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Órdenes de compra</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="header">
+                            La siguiente tabla muestra las órdenes de compra enviadas por el sistema.
+                        </div>
+                        <div class="modal-footer">
+                            @Html.ActionLink("Nueva compra", "Crear", "Compra", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-success btn-sm pull-left" })
+                        </div>
+                        @Html.ValidationMessage("Detalle")
+                        <table id="Datos" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.idCompra)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.nombreProducto)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.cantidadCompra)
+                                    </th>
+
+
+                                    <th>
+                                        <label>Opciones</label>
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        if (item.estadoCompra == false)
+                                        {
+                                            continue;
+                                        }
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.idCompra)
+                                            </td>
+                                            <th>
+                                                @Html.DisplayFor(modelItem => item.nombreProducto)
+                                            </th>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.cantidadCompra)
+                                            </td>
+
+                                            <td>
+                                                @if (Session["ROLES"].Equals("Admin"))
+                                                {
+                                                    @Html.ActionLink(" ", "Deshabilitar", new { id = item.idCompra }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash", onclick = "return Confirmar(this);" })
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Datos').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+
+

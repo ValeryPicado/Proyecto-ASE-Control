@@ -1,0 +1,155 @@
+﻿@model IEnumerable<Consola.Models.Activos>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+    @TempData["alertaMensaje"]
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Home/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Activos</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="header">
+                            La siguiente tabla muestra los activos insertados en el sistema.
+                        </div>
+                        <div class="modal-footer">
+                            @Html.ActionLink("Nuevo activo", "Crear", "Activos", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-success btn-sm pull-left" })
+                            <a href="~/Informes/ReporteActivos.aspx" class="btn btn-success btn-sm">Reporte</a>
+                        </div>
+                        @Html.ValidationMessage("Detalle")
+                        <table id="Datos" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IdActivo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.codigoActivo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.nombreActivo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.costoActivo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.anno)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.meses)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.costoAnual)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.costoMensual)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.fechaActivo)
+                                    </th>
+
+                                        <th>
+                                            <label>Opciones</label>
+                                        </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        if (item.estadoActivo == false)
+                                        {
+                                            continue;
+                                        }
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IdActivo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.codigoActivo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.nombreActivo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.costoActivo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.anno)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.meses)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.costoAnual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.costoMensual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.fechaActivo)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink(" ", "Editar", new { id = item.IdActivo }, new { @class = "btn btn-primary btn-sm glyphicon glyphicon-edit" })
+                                                @if (Session["ROLES"].Equals("Admin"))
+                                                {
+                                                    <label>|</label> @Html.ActionLink(" ", "Deshabilitar", new { id = item.IdActivo }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash", onclick = "return Confirmar(this);" })
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Datos').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+
+}

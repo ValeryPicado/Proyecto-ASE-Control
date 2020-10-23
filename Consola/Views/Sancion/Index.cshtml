@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Consola.Models.Sancion>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+    @TempData["alertaMensaje"]
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Home/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Sanciones</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Admin"))
+                    {
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="header">
+                        La siguiente tabla muestra las sanciones insertadas en el sistema.
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("Nuevo Sanción", "Crear", "Sancion", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-success btn-sm pull-left" })
+                        <a href="~/Informes/ReporteSanciones.aspx" class="btn btn-success btn-sm">Reporte</a>
+                    </div>
+                    @Html.ValidationMessage("Detalle")
+                    <table id="Datos" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.idSanciones)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.idEmpleado)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.idDepartamento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fechaSancion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.codigo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.nombre)
+                                </th>
+
+                                <th>
+                                    <label>Opciones</label>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    if (item.estadoSancion == false)
+                                    {
+                                        continue;
+                                    }
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idSanciones)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idEmpleado)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idDepartamento)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.fechaSancion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.codigo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nombre)
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink(" ", "Editar", new { id = item.idSanciones }, new { @class = "btn btn-primary btn-sm glyphicon glyphicon-edit" })
+                                            @if (Session["ROLES"].Equals("Admin"))
+                                            {
+                                                <label>|</label> @Html.ActionLink(" ", "Deshabilitar", new { id = item.idSanciones }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash", onclick = "return Confirmar(this);" })
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Datos').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+
+}

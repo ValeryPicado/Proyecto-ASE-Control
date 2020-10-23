@@ -1,0 +1,141 @@
+﻿@model Consola.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Usuario2/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Agregar nuevo usuario</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div style="text-align:center;color:red">
+                        @TempData["errorMensaje"]
+                    </div>
+
+                    <div style="text-align:center;color:green">
+                        @TempData["exitoMensaje"]
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Admin"))
+                    {
+                        <div class="box-header">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                        <th style="border:3px solid lightgrey" width="50">
+
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Agregar un nuevo usuario.</h3>
+                                                </div>
+
+                                                @using (Html.BeginForm())
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.Hidden("idUsuario", 0)
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                    <div class="form-horizontal">
+                                                        <br />
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <label>Nombre de usuario:</label>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                <input class="form-control" type="text" id="txtNombreUsuario" name="txtNombreUsuario">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <label>Contraseña:</label>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                <input class="form-control" type="password" id="txtContrasena" name="txtContrasena">
+                                                            </div>
+                                                        </div>
+
+                                                        @*<div class="form-group">
+                                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @id = "Password", @name = "Password" } })
+                                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>*@
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <label>Confirmar contraseña:</label>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                <input class="form-control" type="password" id="txtConfirmarContrasena" name="txtConfirmarContrasena">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-10">
+                                                                <label>Rol de usuario:</label>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                @Html.DropDownList("listIdRol", new SelectList(ViewBag.Lista, "idRol", "nombreRol"), new { htmlAttributes = new { @type = "text", @class = "form-control", @id = "listIdRol", @name = "listIdRol" } })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button id="enviar" class="btn btn-primary" type="submit">Crear usuario</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*@section Scripts
+        {
+        <script>
+            function ConfirmarRol() {
+                if ((document.getElementById("listIdRol").text &&
+                    document.getElementById("listIdRol").value) == null) {
+                    alert("Seleccione un rol de usuario.")
+                }
+            }
+        </script>
+    }*@

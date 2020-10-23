@@ -1,0 +1,78 @@
+﻿    <!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section style="height:50%" class="sidebar">
+        <li class="header">
+            <div class="box-header">
+                <h1 class="box-title" style="color:lightgrey">Menú</h1>
+            </div>
+        </li>
+        <ul class="sidebar-menu" data-widget="tree">
+
+            <li class="@Html.IsSelected("Index", "Home")">
+                <a href="@Url.Action("Index", "Citas")"><i class="glyphicon glyphicon-calendar"></i> <span>Calendario</span></a>
+            </li>
+
+            @if (Session["ROLES"].Equals("Admin"))
+            {
+                <li class="@Html.IsSelected(controller: "Colaborador") treeview">
+                    <a href="@Url.Action("Colaborador", "Colaborador")">
+                        <i class="glyphicon glyphicon-tree-conifer"></i> <span>Colaborador</span>
+                        <span class="pull-right-container">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="@Url.Action("Index", "Empleado")">Expediente</a></li>
+                        <li><a href="@Url.Action("Index", "Usuario2")">Usuario</a></li>
+                        <li><a href="@Url.Action("Index", "Sancion")">Sanción</a></li>
+                    </ul>
+                </li>
+            }
+
+            <li class="@Html.IsSelected(controller: "Proveedores") treeview">
+                <a href="@Url.Action("Proveedores", "Proveedores")">
+                    <i class="glyphicon glyphicon-user"></i> <span>Proveedores</span>
+                    <span class="pull-right-container">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li><a href="@Url.Action("Index", "Proveedores")">Gestionar Proveedores</a></li>
+                    <li><a href="@Url.Action("Index", "Cotizacion")">Cotización de Producto</a></li>
+                    <li><a href="@Url.Action("Index", "Compra")">Orden de Compra</a></li>
+                </ul>
+            </li>
+
+            @if (Session["ROLES"].Equals("Bodega") || Session["ROLES"].Equals("Admin"))
+            {
+                <li class="@Html.IsSelected(controller: "Inventario") treeview">
+                    <a href="@Url.Action("Inventario", "Inventario")">
+                        <i class="glyphicon glyphicon-signal"></i> <span>Inventario</span>
+                        <span class="pull-right-container">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li><a href="@Url.Action("Index", "Inventario")">Gestionar Inventario</a></li>
+
+                        <li><a href="@Url.Action("Index", "SalidaProductos")">Salida de Producto</a></li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li class="@Html.IsSelected("Contact", "Home")">
+                    <a href="@Url.Action("Index", "Inventario")"><i class="glyphicon glyphicon-menu-up"></i> <span>Gestionar Inventario</span></a>
+                </li>
+            }
+
+            <li class="@Html.IsSelected("Contact", "Home")">
+                <a href="@Url.Action("Index", "Activos")"><i class="glyphicon glyphicon-list-alt"></i> <span>Activos de la Empresa</span></a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

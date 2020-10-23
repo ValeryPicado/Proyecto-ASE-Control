@@ -1,0 +1,1097 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDAseControl" Class="DatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=asecontrol.database.windows.net;Initial Catalog=BDAseControl;User ID=valeryn;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="BDAseControlConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.ActualizarActivo" Method="ActualizarActivo">
+    <Parameter Name="IdActivo" Parameter="idActivo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="codigoActivo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreActivo" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="anno" Type="System.Int32" DbType="Int" />
+    <Parameter Name="meses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaActivo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="estadoActivo" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraActivos" Method="ActualizarBitacoraActivos">
+    <Parameter Name="idActivo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="codigoActivo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreActivo" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="anno" Type="System.Int32" DbType="Int" />
+    <Parameter Name="meses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaActivo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="estadoActivo" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraCita" Method="ActualizarBitacoraCita">
+    <Parameter Name="idCita" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idCambioUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Asunto" Parameter="asunto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Inicio" Parameter="inicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Fin" Parameter="fin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ColorFondo" Parameter="colorFondo" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="DiaCompleto" Parameter="diaCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="estadoCita" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraEmpleado" Method="ActualizarBitacoraEmpleado">
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Canton" Parameter="canton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="Distrito" Parameter="distrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="fechaEntrada" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="fechaSalida" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estadoEmpleado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraProveedor" Method="ActualizarBitacoraProveedor">
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="nombreProveedor" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(11)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nombreContacto" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="estadoProveedor" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraSalidaProductos" Method="ActualizarBitacoraSalidaProductos">
+    <Parameter Name="idSalida" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraSancion" Method="ActualizarBitacoraSancion">
+    <Parameter Name="idSanciones" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaSancion" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="estadoSancion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraStock" Method="ActualizarBitacoraStock">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idBodega" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estadoStock" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarBitacoraUsuario" Method="ActualizarBitacoraUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idCambioUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="idTipoRol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarCita" Method="ActualizarCita">
+    <Parameter Name="IdCita" Parameter="idCita" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Asunto" Parameter="asunto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Inicio" Parameter="inicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Fin" Parameter="fin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ColorFondo" Parameter="colorFondo" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="DiaCompleto" Parameter="diaCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="estadoCita" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarColaborador" Method="ActualizarColaborador">
+    <Parameter Name="idColaborador" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido1" Type="System.String" DbType="VarChar(26)" />
+    <Parameter Name="apellido2" Type="System.String" DbType="VarChar(26)" />
+    <Parameter Name="sexo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="fechaNacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="fechaEntrada" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="datoProvincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="datoCanton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="datoDistrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarContrasenaUsuario" Method="ActualizarContrasenaUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarEditarUsuario" Method="ActualizarEditarUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTipoRol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarEmpleado" Method="ActualizarEmpleado">
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Canton" Parameter="canton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="Distrito" Parameter="distrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="fechaEntrada" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="fechaSalida" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estadoEmpleado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarInventario" Method="ActualizarInventario">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idBodega" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estadoStock" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarProveedor" Method="ActualizarProveedor">
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreProveedor" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nombreContacto" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="estadoProveedor" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarSalidaProducto" Method="ActualizarSalidaProducto">
+    <Parameter Name="idSalida" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarSancion" Method="ActualizarSancion">
+    <Parameter Name="idSanciones" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaSancion" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="estadoSancion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarTipoIdentificacion" Method="ActualizarTipoIdentificacion">
+    <Parameter Name="IdTipoIdentificacion" Parameter="idTipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TipoIdentificacion" Parameter="tipoIdentificacion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ActualizarUsuario" Method="ActualizarUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarActivo" Method="AgregarActivo">
+    <Parameter Name="codigoActivo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreActivo" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="anno" Type="System.Int32" DbType="Int" />
+    <Parameter Name="meses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaActivo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="estadoActivo" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraActivos" Method="AgregarBitacoraActivos">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="codigoActivo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreActivo" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="anno" Type="System.Int32" DbType="Int" />
+    <Parameter Name="meses" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaActivo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="estadoActivo" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraCita" Method="AgregarBitacoraCita">
+    <Parameter Name="idCambioUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Asunto" Parameter="asunto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Inicio" Parameter="inicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Fin" Parameter="fin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ColorFondo" Parameter="colorFondo" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="DiaCompleto" Parameter="diaCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="estadoCita" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraCompra" Method="AgregarBitacoraCompra">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cantidadCompra" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalleCompra" Type="System.String" DbType="VarChar(350)" />
+    <Parameter Name="estadoCompra" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraCotizacion" Method="AgregarBitacoraCotizacion">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="nombreProductoCotizacion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cantidadProductoCotizacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalleCotizacion" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="estadoCotizacion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraEmpleado" Method="AgregarBitacoraEmpleado">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IdTipoIdentificacion" Parameter="idTipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido1" Parameter="apellido1" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido2" Parameter="apellido2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Canton" Parameter="canton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="Distrito" Parameter="distrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="fechaEntrada" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="fechaSalida" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estadoEmpleado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraProveedor" Method="AgregarBitacoraProveedor">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="nombreProveedor" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(11)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nombreContacto" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="estadoProveedor" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraSalidaProductos" Method="AgregarBitacoraSalidaProductos">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraSancion" Method="AgregarBitacoraSancion">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaSancion" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="estadoSancion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraStock" Method="AgregarBitacoraStock">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idBodega" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estadoStock" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarBitacoraUsuario" Method="AgregarBitacoraUsuario">
+    <Parameter Name="idCambioUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombreUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="fechaCambio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="idTipoRol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarCita" Method="AgregarCita">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Asunto" Parameter="asunto" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Inicio" Parameter="inicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Fin" Parameter="fin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ColorFondo" Parameter="colorFondo" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="DiaCompleto" Parameter="diaCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="estadoCita" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarColaborador" Method="AgregarColaborador">
+    <Parameter Name="idTipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido1" Type="System.String" DbType="VarChar(26)" />
+    <Parameter Name="apellido2" Type="System.String" DbType="VarChar(26)" />
+    <Parameter Name="sexo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="fechaNacimiento" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="fechaEntrada" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="datoProvincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="datoCanton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="datoDistrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarCompra" Method="AgregarCompra">
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cantidadCompra" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalleCompra" Type="System.String" DbType="VarChar(350)" />
+    <Parameter Name="estadoCompra" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarCotizacion" Method="AgregarCotizacion">
+    <Parameter Name="nombreProductoCotizacion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="cantidadProductoCotizacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalleCotizacion" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="estadoCotizacion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarEmpleado" Method="AgregarEmpleado">
+    <Parameter Name="IdTipoIdentificacion" Parameter="idTipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido1" Parameter="apellido1" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellido2" Parameter="apellido2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="departamento" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Canton" Parameter="canton" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="Distrito" Parameter="distrito" Type="System.String" DbType="Char(2)" />
+    <Parameter Name="fechaEntrada" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="fechaSalida" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="estadoEmpleado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarInventario" Method="AgregarInventario">
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idBodega" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estadoStock" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarPersona" Method="AgregarPersona">
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="ApellidoP" Parameter="apellidoP" Type="System.String" DbType="VarChar(26)" />
+    <Parameter Name="ApellidoM" Parameter="apellidoM" Type="System.String" DbType="VarChar(26)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarProveedor" Method="AgregarProveedor">
+    <Parameter Name="nombreProveedor" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(11)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="correoElectronico" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="nombreContacto" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="estadoProveedor" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarSalidaProducto" Method="AgregarSalidaProducto">
+    <Parameter Name="fechaSalida" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidadSalida" Type="System.Int32" DbType="Int" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarSancion" Method="AgregarSancion">
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaSancion" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="codigo" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="detalle" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="estadoSancion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarStock" Method="AgregarStock">
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nombreProducto" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="unidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idBodega" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estadoStock" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarTipoIdentificacion" Method="AgregarTipoIdentificacion">
+    <Parameter Name="TipoIdentificacion" Parameter="tipoIdentificacion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AgregarUsuario" Method="AgregarUsuario">
+    <Parameter Name="idTipoRol" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="estado" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Cantones" Method="Cantones">
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <ElementType Name="CantonesResult">
+      <Column Name="Provincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Canton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ComprobarCodigoStock" Method="ComprobarCodigoStock">
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ComprobarUnidadesStock" Method="ComprobarUnidadesStock">
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="unidadSalida" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultaActivo" Method="ConsultaActivo">
+    <Parameter Name="idActivo" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaActivoResult">
+      <Column Name="IdActivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoActivo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreActivo" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="anno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="meses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="costoAnual" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="costoMensual" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaActivo" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="estadoActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaCanton" Method="ConsultaCanton">
+    <Parameter Name="provincia" Type="System.Char" DbType="Char(1)" />
+    <ElementType Name="ConsultaCantonResult">
+      <Column Name="Provincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Canton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaCita" Method="ConsultaCita">
+    <Parameter Name="idCita" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaCitaResult">
+      <Column Name="idCita" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="asunto" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="inicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="colorFondo" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="diaCompleto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCita" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaColaborador" Method="ConsultaColaborador">
+    <Parameter Name="idColaborador" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaColaboradorResult">
+      <Column Name="idColaborador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido1" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido2" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="departamento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="fechaEntrada" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fechaSalida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="datoProvincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="datoCanton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="datoDistrito" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaCompra" Method="ConsultaCompra">
+    <Parameter Name="idCompra" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaCompraResult">
+      <Column Name="idCompra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadCompra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalleCompra" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCompra" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaCotizacion" Method="ConsultaCotizacion">
+    <Parameter Name="idCotizacion" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaCotizacionResult">
+      <Column Name="idCotizacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProductoCotizacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadProductoCotizacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalleCotizacion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCotizacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaEmpleado" Method="ConsultaEmpleado">
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaEmpleadoResult">
+      <Column Name="IdEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido2" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="fechaNacimiento" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="departamento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Provincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Canton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Distrito" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaEntrada" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSalida" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoEmpleado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaIdBodega" Method="ConsultaIdBodega">
+    <Parameter Name="codigoBodega" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultaIdProducto" Method="ConsultaIdProducto">
+    <Parameter Name="codigoProducto" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultaInventario" Method="ConsultaInventario">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaInventarioResult">
+      <Column Name="idStock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idBodega" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estadoStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaNombreEmpleado" Method="ConsultaNombreEmpleado">
+    <ElementType Name="ConsultaNombreEmpleadoResult">
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaNombreProducto" Method="ConsultaNombreProducto">
+    <ElementType Name="ConsultaNombreProductoResult">
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaPersona" Method="ConsultaPersona">
+    <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="ConsultaPersonaResult">
+      <Column Name="IdPersona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ApellidoP" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="ApellidoM" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaProveedor" Method="ConsultaProveedor">
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaProveedorResult">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="correoElectronico" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreContacto" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoProveedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaProvincia" Method="ConsultaProvincia">
+    <ElementType Name="ConsultaProvinciaResult">
+      <Column Name="Cod" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarActivo" Method="ConsultarActivo">
+    <ElementType Name="ConsultarActivoResult">
+      <Column Name="IdActivo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoActivo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreActivo" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="costoActivo" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="anno" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="meses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="costoAnual" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="costoMensual" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaActivo" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="estadoActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarBodega" Method="ConsultarBodega">
+    <ElementType Name="ConsultarBodegaResult">
+      <Column Name="idBodega" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreBodega" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCita" Method="ConsultarCita">
+    <ElementType Name="ConsultarCitaResult">
+      <Column Name="idCita" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="asunto" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="inicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="colorFondo" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="diaCompleto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCita" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCitasUsuario" Method="ConsultarCitasUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultarCitasUsuarioResult">
+      <Column Name="idCita" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="asunto" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="inicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="colorFondo" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="diaCompleto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCita" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarClaveUsuario" Method="ConsultarClaveUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultarClaveUsuarioResult">
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCodigoStock" Method="ConsultarCodigoStock">
+    <ElementType Name="ConsultarCodigoStockResult">
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarColaborador" Method="ConsultarColaborador">
+    <ElementType Name="ConsultarColaboradorResult">
+      <Column Name="idColaborador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido1" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido2" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaNacimiento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="departamento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="fechaEntrada" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fechaSalida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="datoProvincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="datoCanton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="datoDistrito" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCompra" Method="ConsultarCompra">
+    <ElementType Name="ConsultarCompraResult">
+      <Column Name="idCompra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadCompra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalleCompra" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCompra" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCorreoProveedor" Method="ConsultarCorreoProveedor">
+    <ElementType Name="ConsultarCorreoProveedorResult">
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="correoElectronico" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarCotizacion" Method="ConsultarCotizacion">
+    <ElementType Name="ConsultarCotizacionResult">
+      <Column Name="idCotizacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProductoCotizacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadProductoCotizacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalleCotizacion" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoCotizacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarDepartamento" Method="ConsultarDepartamento">
+    <ElementType Name="ConsultarDepartamentoResult">
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreDepartamento" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarEmpleado" Method="ConsultarEmpleado">
+    <ElementType Name="ConsultarEmpleadoResult">
+      <Column Name="IdEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido2" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="fechaNacimiento" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="departamento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Provincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Canton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Distrito" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaEntrada" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSalida" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoEmpleado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarEstadoUsuario" Method="ConsultarEstadoUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarExisteNombreUsuario" Method="ConsultarExisteNombreUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarIdEmpleado" Method="ConsultarIdEmpleado">
+    <ElementType Name="ConsultarIdEmpleadoResult">
+      <Column Name="IdEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarIdProveedor" Method="ConsultarIdProveedor">
+    <ElementType Name="ConsultarIdProveedorResult">
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarIdUsuario" Method="ConsultarIdUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarInventario" Method="ConsultarInventario">
+    <ElementType Name="ConsultarInventarioResult">
+      <Column Name="idStock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idBodega" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estadoStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarNombreBodega" Method="ConsultarNombreBodega">
+    <ElementType Name="ConsultarNombreBodegaResult">
+      <Column Name="codigoBodega" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreBodega" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarNombreDepartamento" Method="ConsultarNombreDepartamento">
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultarNombreDepartamentoResult">
+      <Column Name="nombreDepartamento" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarNombreProveedor" Method="ConsultarNombreProveedor">
+    <ElementType Name="ConsultarNombreProveedorResult">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarNombreUsuario" Method="ConsultarNombreUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="ConsultarNombreUsuarioResult">
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarProveedor" Method="ConsultarProveedor">
+    <ElementType Name="ConsultarProveedorResult">
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProveedor" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="correoElectronico" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreContacto" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoProveedor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarRoles" Method="ConsultarRoles">
+    <ElementType Name="ConsultarRolesResult">
+      <Column Name="nombreRol" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarRolUsuario" Method="ConsultarRolUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarSalidaProducto" Method="ConsultarSalidaProducto">
+    <ElementType Name="ConsultarSalidaProductoResult">
+      <Column Name="idSalida" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSalida" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalle" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarSancion" Method="ConsultarSancion">
+    <ElementType Name="ConsultarSancionResult">
+      <Column Name="idSanciones" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSancion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="codigo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="detalle" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="estadoSancion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarStock" Method="ConsultarStock">
+    <ElementType Name="ConsultarStockResult">
+      <Column Name="idStock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idBodega" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estadoStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarTiposIdentificacion" Method="ConsultarTiposIdentificacion">
+    <ElementType Name="ConsultarTiposIdentificacionResult">
+      <Column Name="idTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tipoIdentificacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarUltimaClaveUsuario" Method="ConsultarUltimaClaveUsuario">
+    <ElementType Name="ConsultarUltimaClaveUsuarioResult">
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarUltimoIdUsuario" Method="ConsultarUltimoIdUsuario">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarUltimoProveedor" Method="ConsultarUltimoProveedor">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarUltimoStock" Method="ConsultarUltimoStock">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarUsuario" Method="ConsultarUsuario">
+    <ElementType Name="ConsultarUsuarioResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarUsuarios" Method="ConsultarUsuarios">
+    <ElementType Name="ConsultarUsuariosResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaSalidaProducto" Method="ConsultaSalidaProducto">
+    <Parameter Name="idSalida" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaSalidaProductoResult">
+      <Column Name="idSalida" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSalida" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="detalle" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="estadoSalidaProducto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaSancion" Method="ConsultaSancion">
+    <Parameter Name="idSanciones" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaSancionResult">
+      <Column Name="idSanciones" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaSancion" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="codigo" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="detalle" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="estadoSancion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaStock" Method="ConsultaStock">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaStockResult">
+      <Column Name="idStock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoProducto" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreProducto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="unidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idBodega" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estadoStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaTiposIdentificacion" Method="ConsultaTiposIdentificacion">
+    <Parameter Name="TipoIdentificacion" Parameter="tipoIdentificacion" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaTiposIdentificacionResult">
+      <Column Name="idTipoIdentificacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tipoIdentificacion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultaUsuario" Method="ConsultaUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultaUsuarioResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeshabilitarActivo" Method="DeshabilitarActivo">
+    <Parameter Name="idActivo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarCompra" Method="DeshabilitarCompra">
+    <Parameter Name="idCompra" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarCotizacion" Method="DeshabilitarCotizacion">
+    <Parameter Name="idCotizacion" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarEmpleado" Method="DeshabilitarEmpleado">
+    <Parameter Name="IdEmpleado" Parameter="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarInventario" Method="DeshabilitarInventario">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarProveedor" Method="DeshabilitarProveedor">
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarSalidaProducto" Method="DeshabilitarSalidaProducto">
+    <Parameter Name="idSalida" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarSancion" Method="DeshabilitarSancion">
+    <Parameter Name="idSanciones" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarStock" Method="DeshabilitarStock">
+    <Parameter Name="idStock" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeshabilitarUsuario" Method="DeshabilitarUsuario">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Distritos" Method="Distritos">
+    <Parameter Name="Provincia" Parameter="provincia" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Canton" Parameter="canton" Type="System.String" DbType="Char(2)" />
+    <ElementType Name="DistritosResult">
+      <Column Name="Provincia" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Canton" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Distrito" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.EliminarCompra" Method="EliminarCompra">
+    <Parameter Name="idCompra" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ExisteUsuario" Method="ExisteUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="ExisteUsuarioResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.HabilitarProveedor" Method="HabilitarProveedor">
+    <Parameter Name="idProveedor" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Provincias" Method="Provincias">
+    <ElementType Name="ProvinciasResult">
+      <Column Name="Cod" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

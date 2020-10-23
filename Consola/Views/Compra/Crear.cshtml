@@ -1,0 +1,131 @@
+﻿@model Consola.Models.Compra
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Crear";
+    ViewBag.Title = "Lista";
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Compra/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Envio de orden de compra</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div style="text-align:center;color:red">
+                        @TempData["errorMensaje"]
+                    </div>
+
+                    <div style="text-align:center;color:green">
+                        @TempData["exitoMensaje"]
+                    </div>
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+
+                                        <div class="box">
+                                            <div class="box-header">
+                                                <h3 class="box-title">Agregar una nueva orden de compra</h3>
+                                            </div>
+                                            @using (Html.BeginForm())
+                                            {
+                                                <div class="box-body">
+
+                                                    <div class="form-horizontal">
+                                                        @Html.AntiForgeryToken()
+                                                        @Html.Hidden("idCotizacion", 0)
+                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                        <form method="post" enctype="multipart/form-data" style="width:600px">
+                                                            <div>
+                                                                <label>Para:</label>
+                                                                @Html.DropDownList("listCorreoProveedor", new SelectList(ViewBag.Lista, "correoElectronico", "nombreProveedor"), "--- Seleccionar Proveedor ---", new { htmlAttributes = new { @type = "email", @class = "form-control", @id = "listCorreoProveedor" } })
+                                                                <button id="buscar" class="btn btn-primary" name="buscar" type="button" onclick="ObtenerCorreo()">Buscar correo</button>
+                                                            </div>
+                                                            <br />
+
+                                                            <div>
+                                                                <label>Correo electrónico:</label>
+                                                                <input class="form-control" type="text" name="txtCorreoElectronico" id="txtCorreoElectronico">
+                                                            </div>
+
+                                                            <br />
+
+                                                            <div>
+                                                                <label>Nombre producto:</label>
+                                                                <input class="form-control" type="text" name="txtNombreProducto">
+                                                            </div>
+
+                                                            <br />
+
+                                                            <div>
+                                                                <label>Cantidad:</label>
+                                                                <input class="form-control" type="text" name="txtCantidadProducto">
+                                                            </div>
+
+                                                            <div>
+                                                                <label>Detalle de la compra:</label>
+                                                                <textarea class="form-control" name="txtDetalleCompra" placeholder="Inserte el texto aquí"> </textarea>
+                                                            </div>
+
+                                                            <br />
+                                                            <br />
+                                                            <div>
+                                                                <button id="enviar" class="btn btn-primary" type="submit">Enviar correo</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+    {
+
+    <script>
+        function ObtenerCorreo() {
+            var e = document.getElementById("listCorreoProveedor");
+            var result = e.options[e.selectedIndex].value;
+
+            document.getElementById("txtCorreoElectronico").text = result;
+            document.getElementById("txtCorreoElectronico").value = result;
+        }
+    </script>
+}

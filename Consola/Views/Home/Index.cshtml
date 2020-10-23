@@ -1,0 +1,84 @@
+﻿<!-- Content Wrapper. Contains page content -->
+<!--<h3 style="text-align:center;color:white">
+</h3>-->
+
+<div style="background-color:white; height:50%" class="content-wrapper">
+
+    <script src="~/Scripts/chart/exporting.js"></script>
+    <script src="~/Scripts/chart/highcharts.js"></script>
+
+    <div style="text-align:center">
+        <img src="~/fonts/Imagenes/L5.jpeg" />
+    </div>
+
+    <div class="jumbotron modal-footer" style="background-color:white">
+        <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <script>
+            Highcharts.chart('container1', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'CAPACIDAD EN INVENTARIO'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [{
+                        name: 'Madera',
+                        y: 61.41,
+                        sliced: true,
+                        selected: true
+                    }, {
+                        name: 'Clavos Duplex',
+                        y: 11.84
+                    }, {
+                        name: 'Siner',
+                        y: 10.85
+                    }, {
+                        name: 'Barniz',
+                        y: 4.67
+                    }, {
+                        name: 'Brollas',
+                        y: 4.18
+                    }, {
+                        name: 'Cascos de Seguridad',
+                        y: 1.64
+                    }, {
+                        name: 'Articulos de Limpieza',
+                        y: 1.6
+                    }, {
+                        name: 'Quimicos',
+                        y: 1.2
+                    }, {
+                        name: 'Carton',
+                        y: 2.61
+                    }]
+                }]
+            });
+
+        </script>
+    </div>
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,351 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/alertify/alertify.bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/alertify/alertify.js"></script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <div class="box-header">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                    <th style="border:3px solid lightgrey" width="50">
+                        <a href="/Home/Index" class="nav-link">
+                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                        </a>
+                    </th>
+                    <th td style="vertical-align:middle"><h3 class="box-title">Calendario</h3></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">Consultas</h4>
+                    </div>
+                    <div class="box-body">
+                        <!-- the events -->
+                        <div id="external-events">
+                            <div class="external-event bg-green">Nutrición</div>
+                            <div class="external-event bg-yellow">Visita</div>
+                            <div class="external-event bg-aqua">Médica</div>
+                            <div class="external-event bg-light-blue">Psicológica</div>
+                            <div class="external-event bg-red">Deportiva</div>
+                            <div class="checkbox">
+                                <label for="drop-remove">
+                                    <input type="checkbox" id="drop-remove">
+                                    Remover Consulta
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /. box -->
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Crear Consulta</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                            <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                            <ul class="fc-color-picker" id="color-chooser">
+                                <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- /btn-group -->
+                        <div class="input-group">
+                            <input id="new-event" type="text" class="form-control" placeholder="Nombre Consulta">
+                            <div class="input-group-btn">
+                                <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Agregar</button>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="box box-primary">
+                    <div class="box-body no-padding">
+                        <!-- THE CALENDAR -->
+                        <div id="calendar"></div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /. box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function showModal(title, body, isEventdetail) {
+                $("#MyPopup .modal-title").html(title);
+            }
+            /*inicializar los eventos externos
+         -----------------------------------------------------------------*/
+        function init_events(ele) {
+          ele.each(function () {
+
+              //crear un objeto de evento (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+              //no necesita tener un comienzo o un final
+            var eventObject = {
+              title: $.trim($(this).text()) // use the element's text as the event title
+            }
+
+              //Fecha para los eventos del calendario (datos ficticios)
+            $(this).data('eventObject', eventObject)
+
+              // hacer que el evento sea arrastrable usando jQuery UI
+            $(this).draggable({
+              zIndex        : 1070,
+              revert        : true, //hará que el evento regrese a su
+              revertDuration: 0  //  posición original después del arrastre
+            })
+
+          })
+        }
+
+        init_events($('#external-events div.external-event'))
+
+        /* inicializa el calendario
+         -----------------------------------------------------------------*/
+        // Fecha para los eventos del calendario (datos ficticios)
+        var date = new Date()
+        var d    = date.getDate(),
+            m    = date.getMonth(),
+            y    = date.getFullYear()
+        $('#calendar').fullCalendar({
+            //Crea los datos en español para el manejo del calendario
+            monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+            dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+          header    : {
+            left  : 'prev,next today',
+            center: 'title',
+            right : 'month,agendaWeek,agendaDay'
+          },
+          buttonText: {
+            today: 'Hoy',
+            month: 'Mes',
+            week : 'Semana',
+            day  : 'Día'
+          },
+          //Consulta los Eventos
+          events: function (start,end,timezone,callback) {
+              $.ajax({
+                  type: 'GET',
+                  url: '@Url.Action("ConsultarCita")',
+                  contentType: "application/json; charset=utf-8",
+                  dataType: 'json',
+                  success: function (data) {
+                      var events = [];
+                      $.each(data, function (i, v) {
+                          events.push({
+                              id: v.IdCita,
+                              idUs: v.idUsuario,
+                              title: v.Asunto,
+                              description: v.Descripcion,
+                              start: moment(v.Inicio),
+                              end: v.Fin != null ? moment(v.Fin) : null,
+                              color: v.ColorFondo,
+                              allDay: v.DiaCompleto,
+                              estado: v.estadoCita
+                          });
+                      })
+                      callback(events);
+
+                  },
+
+                  error: function (error) {
+                      alert('failed');
+                  },
+
+              });
+          },
+          //selectable: true,
+          //select: function () {
+          //      showModal('Crear Evento','Informacion',null);
+          //  },
+          //height:'parent',
+          editable  : true,
+          droppable: true, // ¡Esto permite que las cosas se dejen caer en el calendario!
+          nowIndicator:true,
+          drop: function (date, allDay) { // esta función se llama cuando se cae algo
+
+              //recuperar el objeto de evento almacenado del elemento descartado
+            var originalEventObject = $(this).data('eventObject')
+
+            // necesitamos copiarlo, para que múltiples eventos no tengan una referencia al mismo objeto
+            var copiedEventObject = $.extend({}, originalEventObject)
+
+            // asignarle la fecha que se informó
+            copiedEventObject.start           = date
+            copiedEventObject.allDay          = allDay
+            copiedEventObject.backgroundColor = $(this).css('background-color')
+            copiedEventObject.borderColor     = $(this).css('border-color')
+
+
+            //renderizar el evento en el calendario
+            //el último argumento `verdadero` determina si el evento" se queda " (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
+
+            // ¿está marcada la casilla de verificación "eliminar después de soltar"?
+            if ($('#drop-remove').is(':checked')) {
+              // si es así, elimine el elemento de la lista "Eventos arrastrables"
+              $(this).remove()
+            }
+
+            var sdate = $.fullCalendar.moment(date.format());  // Create a clone of the dropped date.
+            sdate.stripTime();        // The time should already be stripped but lets do a sanity check.
+            sdate.time('08:00:00');   // Set a default start time.
+            copiedEventObject.start = sdate;
+
+            var edate = $.fullCalendar.moment(date.format());  // Create a clone.
+            edate.stripTime();        // Sanity check.
+            edate.time('12:00:00');   // Set a default end time.
+            copiedEventObject.end = edate;
+
+            var Usuario = @Session["Usuario"];
+
+            $.ajax({
+                url: '@Url.Action("AgregarCita")',
+                dataType: 'GET',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {
+                    IdUsuario: Usuario,
+                    Asunto: copiedEventObject.title,
+                    Descripcion: copiedEventObject.title,
+                    Inicio: sdate.format(),
+                    Fin: edate.format(),
+                    ColorFondo: 'blue',
+                    DiaCompleto: false,
+                    estadoCita: true
+                },
+                success: function (data) {
+                    alertify.alert('Mensaje Sistema', 'Dato Agregado Exitosamente!', function () { alertify.success('Ok'); });
+                },
+                error: function (error) {
+                    alert('failed');
+                }
+            });
+
+          },
+            //El eventDrop envia por medio del ajax al controlador
+            evenClick: function (event, delta, revertFunc, jsEvent, ui, view) {
+                $.ajax({
+                    url: '@Url.Action("CambioCita")',
+                    dataType: 'POST',
+                    data: {
+                        id: event.id,
+                        start: event.start.format(),
+                        end: event.end.format()
+                    },
+                });
+            },
+            eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
+                $.ajax({
+                    url: '@Url.Action("ActualizarCita")',
+                    dataType: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: {
+                        IdCita: event.id,
+                        Asunto: event.title,
+                        Descripcion: event.description,
+                        Inicio: event.start.format(),
+                        Fin: event.end.format(),
+                        ColorFondo: event.color,
+                        DiaCompleto: event.allDay
+                    },
+                    success: function (data) {
+                        alertify.alert('Mensaje Sistema', 'Dato Modificado Exitosamente!', function () { alertify.success('Ok'); });
+                    },
+                    error: function (error) {
+                        alert('failed');
+                    }
+                });
+            },
+            eventResize: function (event, delta, revertFunc, jsEvent, ui, view) {
+                $.ajax({
+                    url: '@Url.Action("CambioCita")',
+                    dataType: 'POST',
+                    data: {
+                        id: event.id,
+                        start: event.start.format(),
+                        end: event.end.format()
+                    },
+                });
+            }
+        })
+
+        /* AGREGAR EVENTOS */
+        var currColor = '#3c8dbc' //Rojo por defecto
+            //Botón selector de color
+        var colorChooser = $('#color-chooser-btn')
+        $('#color-chooser > li > a').click(function (e) {
+          e.preventDefault()
+          //Guardar color
+          currColor = $(this).css('color')
+            //Añadir efecto de color al botón
+          $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
+        })
+        $('#add-new-event').click(function (e) {
+          e.preventDefault()
+          //Obtenga valor y asegúrese de que no sea nula
+          var val = $('#new-event').val()
+          if (val.length == 0) {
+            return
+          }
+
+          //Crea eventos
+          var event = $('<div />')
+          event.css({
+            'background-color': currColor,
+            'border-color'    : currColor,
+            'color'           : '#fff'
+          }).addClass('external-event')
+          event.html(val)
+          $('#external-events').prepend(event)
+
+          //Agregar funcionalidad arrastrable
+          init_events(event)
+
+          //Eliminar evento de entrada de texto
+          $('#new-event').val('')
+        })
+      })
+    </script>
+
+}

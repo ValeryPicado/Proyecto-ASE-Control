@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Consola.Models.SalidaProductos>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+    @TempData["alertaMensaje"]
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Home/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Salidas de stock</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Bodega") || Session["ROLES"].Equals("Admin"))
+                    {
+                        <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="header">
+                        La siguiente tabla muestra las boletas de salida de proudcto insertadas en el sistema.
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("Nueva boleta despacho", "Crear", "SalidaProductos", null, new { data_modal = "", id = "btnCreate", @class = "btn btn-small btn-success btn-sm pull-left" })
+                    </div>
+                    @Html.ValidationMessage("Detalle")
+                    <table id="Datos" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.idSalida)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fechaSalida)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.codigoProducto)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.nombreProducto)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.unidad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.detalle)
+                                </th>
+
+                                <th>
+                                    <label>Opciones</label>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    if (item.estadoSalidaProducto == false)
+                                    {
+                                        continue;
+                                    }
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idSalida)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.fechaSalida)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.codigoProducto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nombreProducto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.unidad)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.detalle)
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink(" ", "Editar", new { id = item.idSalida }, new { @class = "btn btn-primary btn-sm glyphicon glyphicon-edit" })
+                                            @if (Session["ROLES"].Equals("Bodega") || Session["ROLES"].Equals("Admin"))
+                                            {
+                                                <label>|</label> @Html.ActionLink(" ", "Deshabilitar", new { id = item.idSalida }, new { @class = "btn btn-danger btn-sm glyphicon glyphicon-trash", onclick = "return Confirmar(this);" })
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Datos').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+
+}

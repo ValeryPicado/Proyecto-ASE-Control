@@ -1,0 +1,153 @@
+﻿@model Consola.Models.SalidaProductos
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/SalidaProductos/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Editar boleta de salida de producto</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div style="text-align:center;color:red">
+                        @TempData["errorMensaje"]
+                    </div>
+
+                    <div style="text-align:center;color:green">
+                        @TempData["exitoMensaje"]
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Bodega") || Session["ROLES"].Equals("Admin"))
+                    {
+                        <div class="box-header">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                        <th style="border:3px solid lightgrey" width="50">
+
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Editar los datos de la boleta de salida de producto. Si desea modificar la cantidad de unidades de un producto, deberá hacerlo en el módulo de inventario.</h3>
+                                                </div>
+
+                                                @using (Html.BeginForm())
+                                                {
+                                                    @Html.AntiForgeryToken()
+
+                                                    <div class="form-horizontal">
+                                                        <br />
+                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                        @Html.HiddenFor(model => model.idSalida, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                        <label>Fecha de salida:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                @*@Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                                @Html.EditorFor(model => model.fechaSalida, new { htmlAttributes = new { @class = "form-control pull-right", @id = "datepicker", Type = "date" } })
+                                                                @Html.ValidationMessageFor(model => model.fechaSalida, "", new { @class = "text-danger", Type = "date" })
+                                                            </div>
+                                                        </div>
+
+                                                        <label>Producto:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                @Html.DropDownList("listCodigoStock", new SelectList(ViewBag.Lista, "codigoProducto", "nombreProducto"), new { htmlAttributes = new { @type = "text", @class = "form-control", @id = "listCodigoStock", @name = "listCodigoStock" } })
+                                                                @*@Html.EditorFor(model => model.codigoProducto, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.codigoProducto, "", new { @class = "text-danger" })*@
+                                                            </div>
+                                                        </div>
+
+                                                        @*<label>Nombre de producto:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                @Html.EditorFor(model => model.nombreProducto, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.nombreProducto, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>*@
+
+                                                        @*<label>Unidades:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                @Html.EditorFor(model => model.unidad, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.unidad, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>*@
+
+                                                        <label>Detalle:</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                @Html.EditorFor(model => model.detalle, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.detalle, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="modal-footer justify-content-start">
+                                                                <input class="btn btn-primary" type="submit" value="Guardar cambios" id="guardar" name="guardar" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#guardar").click, function () {
+                alert('Institucion Guardada con exito!');
+            }
+        }
+        );
+    </script>
+
+    @*<script type="text/javascript">
+        $('#datepicker').datepicker({
+            dateFormat: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>*@
+}

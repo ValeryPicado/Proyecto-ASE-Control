@@ -1,0 +1,334 @@
+﻿@model Consola.Models.Empleado
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h3 style="text-align:center;color:white">
+</h3>
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <div class="box-header">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                    <th style="border:3px solid lightgrey" width="50">
+                                        <a href="/Empleado/Index" class="nav-link">
+                                            <img src="~/fonts/Imagenes/flecha_izquierda.png" width="64" height="32" />
+                                        </a>
+                                    </th>
+                                    <th td style="vertical-align:middle"><h3 class="box-title">Agregar un nuevo empleado</h3></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <div style="text-align:center;color:red">
+                        @TempData["errorMensaje"]
+                    </div>
+
+                    <div style="text-align:center;color:green">
+                        @TempData["exitoMensaje"]
+                    </div>
+
+                    @if (Session["ROLES"].Equals("Admin"))
+                    {
+                        <div class="box-header">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table table-bordered" style="border:3px solid lightgrey;vertical-align:middle">
+                                        <th style="border:3px solid lightgrey" width="50">
+
+                                            <div class="box">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Agregar un nuevo empleado.</h3>
+                                                </div>
+
+                                                <!-- /.box-header -->
+                                                @using (Html.BeginForm())
+                                                {
+                                                    <div class="box-body">
+                                                        <div class="form-horizontal">
+                                                            @Html.AntiForgeryToken()
+                                                            @Html.Hidden("IdEmpleado", 0)
+                                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                            <label>Tipo de identificación:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.DropDownListFor(model => model.IdTipoIdentificacion, new SelectList(ViewBag.ListaTiposIdentificacion, "IdTipoIdentificacion", "TipoIdentificacion"), "--Tipo Identificacion--", new { @class = "form-control", style = "font-size: 1.3em; font-weight:700;" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Número de cédula:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+                                                                </div>
+                                                                <input class="btn btn-primary" type="button" value="Buscar nombre y apellidos" id="buscar" name="buscar" />
+                                                            </div>
+
+                                                            <label>Nombre:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Primer apellido:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Apellido1, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Apellido1, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Segundo apellido:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Apellido2, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Apellido2, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Fecha de nacimiento:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control pull-right", @id = "datepicker", Type = "date" } })
+                                                                    @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger", Type = "date" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Departamento:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-10">
+                                                                    @Html.DropDownList("listIdDepartamento", new SelectList(ViewBag.Lista, "nombreDepartamento", "nombreDepartamento"), new { htmlAttributes = new { @type = "text", @class = "form-control", @id = "listIdDepartamento", @name = "listIdDepartamento" } })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Correo:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", Type = "Email" } })
+                                                                    @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger", Type = "Email" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Teléfono:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", @type = "tel", @pattern = "[0-9]{4}-[0-9]{4}", @placeholder = "Ejemplo: XXXX-XXXX" } })
+                                                                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger", @type = "tel" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Provincia:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.DropDownListFor(model => model.Provincia, new SelectList(ViewBag.ListaProvincias, "Cod", "Nombre"), "--Provincia--", new { @class = "form-control", style = "font-size: 1.3em; font-weight:700;" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Cantón:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.DropDownListFor(model => model.Canton, new SelectList(string.Empty, "Canton", "Nombre"), "--Canton--", new { @class = "form-control", style = "font-size: 1.3em; font-weight:700;" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Distrito:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.DropDownListFor(model => model.Distrito, new SelectList(string.Empty, "Distrito", "Nombre"), "--Distrito--", new { @class = "form-control", style = "font-size: 1.3em; font-weight:700;" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Dirección:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger", Type = "Email" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Fecha de entrada:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.fechaEntrada, new { htmlAttributes = new { @class = "form-control pull-right", @id = "datepicker", Type = "date" } })
+                                                                    @Html.ValidationMessageFor(model => model.fechaEntrada, "", new { @class = "text-danger", Type = "date" })
+                                                                </div>
+                                                            </div>
+
+                                                            <label>Fecha de salida:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-6">
+                                                                    @Html.EditorFor(model => model.fechaSalida, new { htmlAttributes = new { @class = "form-control pull-right", @id = "datepicker", Type = "date" } })
+                                                                    @Html.ValidationMessageFor(model => model.fechaSalida, "", new { @class = "text-danger", Type = "date" })
+                                                                </div>
+                                                            </div>
+
+                                                            @*<label>Estado:</label>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.DropDownListFor(model => model.Estado, new SelectList(ViewBag.ListaEstados, "Value", "Text"), "--Estado--", new { @class = "form-control", style = "font-size: 1.3em; font-weight:700;" })
+            </div>
+        </div>*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-start">
+                                                        <input class="btn btn-primary" type="submit" value="Guardar" id="guardar" name="guardar" />
+                                                    </div>
+                                                }
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3 style="text-align:center;color:black">
+                            Este módulo no está disponible para este usuario.
+                        </h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+    @*<script type="text/javascript">
+        $('#datepicker').datepicker({
+            dateFormat: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>
+
+    <script type="text/javascript">
+        $('#datepicker1').datepicker({
+            dateFormat: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>
+
+    <script type="text/javascript">
+        $('#datepicker2').datepicker({
+            dateFormat: 'dd/mm/yyyy',
+            autoclose: true
+        })
+    </script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#guardar").click, function () {
+                alert('Institucion Guardada con exito!');
+            });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#buscar").click(function () {
+                $("#Nombre").empty();
+                $("#Apellido1").empty();
+                $("#Apellido2").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ConsultaPersona")',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: JSON.stringify({ identificacion: $("#Identificacion").val() }),
+                    success: function (resultado) {
+                        $("#Nombre").val(resultado[0].Nombre);
+                        $("#Apellido1").val(resultado[0].ApellidoP);
+                        $("#Apellido2").val(resultado[0].ApellidoM);
+                    },
+                    error: function (ex) {
+                        alert('Fallo al consultar los datos : ' + ex);
+                    }
+                });
+            })
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Provincia").change(function () {
+                $("#Canton").empty();
+                $("#Distrito").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CargaCantones")',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: JSON.stringify({ provincia: $("#Provincia").val() }),
+                    success: function (cantones) {
+                        $("#Canton").append("<option value=''>--Seleccione--</option>");
+                        $.each(cantones, function (i, canton) {
+                            $("#Canton").append('<option value="' + canton.Canton + '">' + canton.Nombre + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Fallo al cargar los cantones : ' + ex);
+                    }
+                });
+            })
+            $("#Canton").change(function () {
+                $("#Distrito").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CargaDistritos")',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: JSON.stringify({ provincia: $("#Provincia").val(), canton: $("#Canton").val() }),
+                    success: function (distritos) {
+                        $("#Distrito").append("<option value=''>--Seleccione--</option>");
+                        $.each(distritos, function (i, distrito) {
+                            $("#Distrito").append('<option value="' + distrito.Distrito + '">' + distrito.Nombre + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Fallo al cargar los distritos : ' + ex);
+                    }
+                });
+            })
+
+        });
+
+
+
+    </script>
+}

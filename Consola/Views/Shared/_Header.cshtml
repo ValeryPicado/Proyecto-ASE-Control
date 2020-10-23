@@ -1,0 +1,55 @@
+﻿<header class="main-header" style="background-color: #00a65a">
+    <!-- Logo -->
+    <a href="@Url.Action("Index", "Home")" class="logo" style="background-color: #00a65a">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>SE</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+            <b>ASE CONTROL</b>
+            <img src="" />
+        </span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" style="background-color: #00a65a">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu" style="background-color: #00a65a">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/fonts/Imagenes/usuario.png" />
+                        <span class="hidden-xs">@Html.ViewContext.HttpContext.User.Identity.Name</span>
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: #222d32">
+                        <!-- User image -->
+
+                        <li class="user-footer" style="background-color: #222d32">
+                            </br>
+                            <div class="box" style="background-color: #222d32">
+                                <div class="form-group" style="color:#b8c7ce">
+                                    <label>Usuario: </label>
+                                    @Session["Usuario"]
+                                </div>
+                                <div class="form-group" style="color:#b8c7ce">
+                                    <label>Rol: </label>
+                                    @Session["ROLES"]
+                                </div>
+                            </div>
+
+                            <div class="pull-right" style="background-color:powderblue;">
+                                <a href="@Url.Action("Salir", "Login")" class="btn btn-danger btn-flat">Salir</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                @*<li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>*@
+            </ul>
+        </div>
+    </nav>
+</header>
